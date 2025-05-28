@@ -1,0 +1,297 @@
+ tbsweb.british-school.org/ssl admin : adm!n
+
+Administrator : Br!t!$#2024
+Student : WsxCde@!()
+Staff	: CisInt!@)(
+Visitor : H3alth23@#
+Printer : Syst$m%337
+chiit	: TBSChi!@)(
+
+computer mangment > administrative templates > system > logon
+do not display the getting started welcome screen at logon > enable   
+
+secpol.msc > security setting > local > security option 
+user account control:admin approval > enable 
+
+gpedit.msc > show first animation > disable 
+
+ipconfig /flushdns 
+
+Active Directory Configuration : dsa.msc
+user mangment : lusrmgr.msc
+inetcpl.cpl
+netplwiz
+appwiz.cpl
+system.cpl
+ncpa.cpl
+control printers
+wt 
+
+
+https://github.com/paolo-projects/unlocker
+https://archive.org/details/macos-collection
+
+https://www.youtube.com/watch?v=sP0sUGfK2OI
+https://www.youtube.com/watch?v=5ycntHs-kAE&t=3589s
+
+
+https://www.youtube.com/watch?v=EAaDoYR7AqY
+https://archive.org/details/macos_iso
+
+
+netstat -a 
+nslookup 
+set server 8.8.8.8
+set type = ns
+
+
+ipconfig /displaydns
+
+
+hostnamectl 
+
+https://docs.google.com/spreadsheets/d/1uD9_l_TxTz2SN7WTMYF ooHNfUaDXOQsGEt0QYZ5UsU/edit?pli=1&gid=947199887#gid=947199887
+
+
+
+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
+
+ssh rhel@192.168.154.2
+
+Day 2
+01:06:02
+File mangmanent 
+
+D RWX RWX RWX
+- RW- RW- -r-
+
+ll - check file information 
+when you dont have permmision in folder under the file not accessable 
+
+Dir User group other
+D    RWX  RWX   RWX
+
+File User group other
+ -    RW-  RW-   -r-
+
+chmod 771 filename.txt
+
+421
+RWX 	7
+RW- 	6
+R-X	5
+R--	4
+-WX	3
+-W- 	2
+--X 	1
+--- 	0
+
+(RW-RW-R--) 664
+(R--------) 400
+
+Chown kallen demo.txt
+1:34
+
+what is ssh 
+Secure Shell connection between computer instance
+ 
+Two type of Key 
+public key   manjulika .pem on server
+private key  akashy kumar.pub on client 
+
+by keygen genrate two key pub and private 
+
+
+client server
+chmod 400 private.pem
+ssh -i \\shivam\user\private.pem username@hostname
+
+cd .ssh contain all ssh configuration 
+
+ssh-keygen to create Pub and private key-pair when we create key put public key on remote add authorized file and private key on local
+
+scp 
+scp ubuntu@ubuntu:/home/ubuntu/DevOps/pu C:\Users\shivamsingh\desktop
+
+Scp -i keypath remote_user@remote_hostname:path/key destinatio\hostmachin path
+
+(02:21)
+
+Assignment what is public and private key and authorized key  
+* Create Two instance and create connection between two of them.
+
+* sudo apt-get update 
+perform package download
+
+* sudo apt-get upgrade 
+performing package installation 
+
+sudo apt purge nginx remove from drive
+
+sudo systemctl status nginx  checking package status  
+sudo systemctl start nginx  	start package
+sudo systemctl stop nginx	stop package
+sudo systemctl enable nginx  	start and add startup package 
+
+(02:43:00)
+grep source word 	Finding Pattern
+Global regular expression print 
+grep junoon -r /home/ubuntu/DevOps(Recussive)
+grep junoon -ir /home/ubuntu/DevOps (Case insensitivity)
+
+grep WARN Zookeeper_2k.log
+
+
+system running application backend system are creating log with timeline can i take live example zookeeper 
+
+https://github.com/logpai/loghub.git
+(02:55:00)
+
+wget is command to downlaod over link 
+
+awk '/WARN/' Zookeeper_2k.log (finding pattern).
+awk '/WARN/ {print$1}' Zookeeper_2k.log (for the first line to print)
+
+
+
+
+
+Linux Volume Mangment.
+
+introduction to volume and aks EBS
+
+
+
+Laptop  volume 
+in server we use store data in volumes
+external volume EBS - Elastic block store vol1 vol2 vol3
+after that we attached in vm server 
+defeult aws gives us 8 gb 
+
+
+nginx web server
+
+To serve web application provide server proxy
+it can handle http resuest using default port 80 
+
+edit webserver file /var/www/html
+
+sudo apt install nginx
+sudo systemctl nginx status/start/reload
+sudo apt purge nginx 
+sudo firewall-cmd--permanent --add-service=http  
+
+nginx config 
+/etc/nginx/nginx.conf
+vim /etc/nginx/nginx.conf
+
+sudo cp nginx.conf nginx.conf-backup
+
+
+default webpage /usr/share/nginx/html
+
+Date 06-Feb-2025
+
+Task :
+
+   1. Change ssh port on aws vm 
+   2. 
+
+
+
+
+learn :
+   1. lvm logical volume mounting 
+
+Agenda.
+
+* Introduction to linux volumes and aws Ebs 
+* Physical vs logical volumes vs volume groups in linux 
+* Mounting volume in linux 
+* Managing aws Ebs on ec2 instance 
+* Introduction to lvm logical volume manager 
+* Using lvm with ebs for dynaminc storage managment(notes)
+
+(Block/Disk/volume)  +    Vm       + (Vol-10/Vol-12/Vol-14)
+    Storage	        AWS EC2       Attached
+
+* Default Vm min storage is 8gb (root storage)
+
+
+Commands
+
+lsblk - list block
+df -h - Showinfg mounting point or storage
+
+/dev/xvda
+
+logical and volume group 
+created volume attatached vol need to group them 
+
+
+
+10Gb		12GB		14GB(Logical Volume)
+ 	    
+	    Volume-group(Volume group)
+
+vol-1		vol-2		vol-3(Physical Volume)
+
+
+LVM(Logical Volume manager)
+physical v show   - pvs
+Physical v create - pvcreate /dev/xvdaf /dev/xvdg /dev/xvdh
+volume create	  - vgcreate tws-vgname /dev/xvdh /dev/xvdg
+	lvcreate -L 10G -n tws-lv tws-volume-group
+	pvdisplay 
+	vgdisplay
+	lvdisplay
+
+sudo mkfs.ext4 /dev/tws_vol_group/tws_lvuuuu
+
+
+curl -fOL https://github.com/coder/code-server/releases/download/v4.96.4/code-server_v4.96.4_amd64.deb
+
+
+Shivam.singxh
+
+ngrok http 8000
+
+ngrok http 8000 --oauth google
+
+ngrok http --basic-auth="username:password" 8080
+
+ngrok config add-authtoken <$Your-token>
+
+./ngrok tcp 22
+
+ngrok tcp 22
+
+ssh -p {port-number-in-url} username@hostname
+
+ngrok http --url=shiner-daring-humbly.ngrok-free.app 80 
+
+
+
+
+Please let us know for any further assistance.
+
+Regards
+Shivam Singh
+
+
+
+
+
+Aws
+
+EC2 : Virtual server in the cloud 
+  
+
+spotify
+
+shivam.singxh+l@gmail.com Ghoda@#@880041
+
+
+
+
+-incognito www.gmail.com www.trainwithsubham.com www.youtube.com
